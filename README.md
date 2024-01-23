@@ -1,22 +1,39 @@
 # Python Magic Methods
 
-### `__abs__`
+### `__abs__(self)`
 
-Описание
-
-```python
-
-```
-
-### `__add__`
-
-Описание
+Определяет поведение встроенной функции `abs()` для данного объекта
 
 ```python
+class MyObject:
+    def __init__(self, value):
+        self.value = value
 
+    def __abs__(self):
+        return self.value
+
+obj = MyObject(5)
+print(abs(obj))  # 5
 ```
 
-### `__aenter__`
+### `__add__(self, other)`
+
+Определяет поведение операции сложения для данного объекта.
+
+```python
+class MyObject:
+    def __init__(self, value):
+        self.value = value
+
+    def __add__(self, other):
+        return MyObject(self.value + other.value)
+
+obj1 = MyObject(5)
+obj2 = MyObject(10)
+print(obj1 + obj2)  # MyObject(15)
+```
+
+### `__aenter__(self)`
 
 Описание
 
